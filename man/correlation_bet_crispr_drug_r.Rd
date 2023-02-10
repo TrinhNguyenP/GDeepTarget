@@ -23,6 +23,9 @@ correlation_df  Genes with corelation values and P val associated with drug acro
 \description{
 to compute the correlations between the viability of cell lines after CRISPR knockout of each gene and the viability of the same cell lines after drug treatment
 }
+\details{
+correlation_bet_crispr_drug_r
+}
 \examples{
 data (OntargetM)
 all_drugs <- OntargetM$DrugMetadata[,"broad_id_trimmed"]

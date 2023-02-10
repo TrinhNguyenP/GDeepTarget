@@ -1,8 +1,16 @@
-
+#' cor.test_trimmed_v0
+#' Trimmed cor test that is faster than standard cor.test
+#' @export
+#'
 ## this will be called from other functions.
 ### <!-- Trimmed cor test that is faster than standard cor.test -->
 
 cor.test_trimmed_v0 <- function(x, ...) UseMethod("cor.test_trimmed_v0")
+
+#' cor.test_trimmed_v0.default
+#' Trimmed cor test that is faster than standard cor.test
+#' @export
+
 cor.test_trimmed_v0.default <-
   function(x, y, alternative = c("two.sided", "less", "greater"),
            method = c("pearson"), exact = NULL,
