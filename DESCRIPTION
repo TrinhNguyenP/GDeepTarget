@@ -9,4 +9,8 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+Imports:tictoc, fgsea, ggplot2, ggpubr, statar, interactions, stats, reshape2, base, parallel,
+        pROC, data.table, ggrepel, grid, cowplot, gridExtra, stringb, DEGreport, readxl, 
+        stringr, VennDiagram, base, fgsea
 RoxygenNote: 7.2.3
+
