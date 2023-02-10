@@ -51,7 +51,7 @@ DKSKnownTarget <- function(infunc_drugVScrispr_corr_features_list=drugVScrispr_c
     MaxTargetName=unlist(all_drugTargets_MAXcorrGene),
     Maxcorr=all_drugTargets_MAXcorrelation)
   KnownTarget_predictions=KnownTarget_predictions[order(KnownTarget_predictions$Maxcorr, decreasing = T),]
-  KnownTarget_predictions$drugBroadID = onTarget$drugCategory$broad_id_trimmed[match(KnownTarget_predictions$drugName, onTarget$drugCategory$name)]
+  KnownTarget_predictions$drugBroadID = metadata.f$broad_id_trimmed[match(KnownTarget_predictions$drugName, metadata.f$name)]
   ## match the drug name, get the max corelation of that drug, and then calcualtes  the p value.
   BestTargetName=apply(corrMat[,match(KnownTarget_predictions$drugBroadID, colnames(corrMat))],
                        2, function(x) rownames(corrMat)[which.max(x)] )
