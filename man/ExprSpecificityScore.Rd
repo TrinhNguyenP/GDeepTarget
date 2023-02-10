@@ -26,6 +26,9 @@ ExprSpecificityScore(
 \description{
 provide each gene a likelihood score of being a secondary target of drug
 }
+\details{
+ExprSpecificityScore
+}
 \examples{
 data (OntargetM)
 KnownTarget.predictions <- readRDS ( "KnownTarget_predictions.RDS")

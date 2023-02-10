@@ -23,6 +23,9 @@ MutantSpecificityScore(
 \description{
 compute the Mutant Specificity Score (MS Score) of a drug to its known target
 }
+\details{
+MutantSpecificityScore
+}
 \examples{
 data (OntargetM)
 KnownTarget.predictions <- readRDS ( "KnownTarget_predictions.RDS")

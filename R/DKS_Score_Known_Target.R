@@ -1,7 +1,7 @@
-
+#' DKSKnownTarget
 #' @title provide a similarity score ( corelation values) for Known Target of a drug and the best Primary Target for each one.
 #' @description It takes the name of a drug as an input and returns a list containing the DKS score and P-value for the correlation between the drug and each gene.
-#' @param infunc_drugVScrispr_corr_features_list The list of result from "correlation_bet_crispr_drug_r" function.
+#' @param infunc_drugVScrispr_corr_features_list The list of result from "CorCRISPRDrugR" function.
 #' @param infunc_drug_metadata Meta data from the drug.
 #' @return knownTarget_predictions object: The list of targeted genes along with drug information and  "best corelation" and "max corelation values" along with P values
 #' @examples
@@ -11,12 +11,13 @@
 #' sample_drugs=sample(all_drugs, 5)
 #' metadata.f <- OntargetM$DrugMetadata[sample_drugs,]
 #' drug.prism.f <- OntargetM$secondary_prism[sample_drugs,]
-#' drugVScrispr.Corr.Features.List=mclapply(sample_drugs,function(x) correlation_bet_crispr_drug_r(x, infunc_drugResponse=drug.prism.f, infunc_CRISPRResponse=OntargetM$avana_CRISPR),mc.cores = 2)
+#' drugVScrispr.Corr.Features.List=mclapply(sample_drugs,function(x) CorCRISPRDrugR (x, infunc_drugResponse=drug.prism.f, infunc_CRISPRResponse=OntargetM$avana_CRISPR),mc.cores = 2)
 #' names (drugVScrispr.Corr.Features.List) <- sample_drugs
-#' KnownTarget.predictions <- DKS_score_KnownTarget ( infunc_drugVScrispr_corr_features_list=drugVScrispr.Corr.Features.List,infunc_drug_metadata = metadata.f)
+#' KnownTarget.predictions <- DKSKnownTarget( infunc_drugVScrispr_corr_features_list=drugVScrispr.Corr.Features.List,infunc_drug_metadata = metadata.f)
 #' saveRDS(KnownTarget.predictions, "KnownTarget_predictions.RDS")
-
-DKS_score_KnownTarget <- function(infunc_drugVScrispr_corr_features_list=drugVScrispr_corr_features_list,infunc_drug_metadata = metadata.Drug){
+#' @import parallel
+#' @export
+DKSKnownTarget <- function(infunc_drugVScrispr_corr_features_list=drugVScrispr_corr_features_list,infunc_drug_metadata = metadata.Drug){
   drugSubset_map2_annotation <- match(names(infunc_drugVScrispr_corr_features_list), infunc_drug_metadata[,"broad_id_trimmed"])
   ## based on the name of the drug.
   all_drugNames_common = infunc_drug_metadata[,'name'] [drugSubset_map2_annotation]

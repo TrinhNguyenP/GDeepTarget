@@ -1,3 +1,4 @@
+#' ExprSpecificityScore
 #' @title Compute interaction between the drug and KO expression in term of lower vs higher expression
 #' @description provide each gene a likelihood score of being a secondary target of drug
 #' @param infunc_KnownTarget  The list of targeted genes along with drug informaiton and corelation values "best corelation" and max corelation values along with P values
@@ -16,7 +17,8 @@
 #' identical ( names(interaction.Features.Secondary.LowExpr), KnownTarget.predictions$drugName)
 #' TargetLoweEpr.specificity=cbind(KnownTarget.predictions[,1:2], TargetLoweEpr.specificity)
 #' saveRDS(TargetLoweEpr.specificity, file='Target_LowedEpr_specificity.RDS')
-
+#' @import parallel
+#' @export
 ExprSpecificityScore <- function(infunc_KnownTarget=KnownTarget_predictions,infunc_Expression=expression_matched,infunc_drugResponse=drug.Res.PRISM.matched, infunc_CRISPRResponse=CRISPR.KO.Res.matched,infunc_low_ex_cut_off  = 3 )
   {
   ## record the # of cellLines having the Low_expression.based.max.target.name to the object KnownTarget.predictions to be used later.

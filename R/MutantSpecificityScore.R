@@ -1,3 +1,4 @@
+#' MutantSpecificityScore
 #' @title Compute interaction between the drug and KO expression in term of mutant
 #' @description compute the Mutant Specificity Score (MS Score) of a drug to its known target
 #' @param infunc_KnownTarget  The list of targeted genes along with drug information and corelation values "best corelation" and max corelation values along with P values
@@ -11,7 +12,7 @@
 #' Target_Mutation_specificity=data.frame(mutation_interaction_strength=sapply(interaction.Features.Mutant, function(x) x[1]), mutation_interaction_P=sapply(interaction.Features.Mutant, function(x) x[2]))
 #' Target_Mutation_specificity=cbind(KnownTarget_predictions[,1:2], Target_Mutation_specificity)
 #' saveRDS(Target_Mutation_specificity,'Target_Mutation_specificity.RDS');
-
+#' @export
 MutantSpecificityScore <- function(infunc_KnownTarget=KnownTarget_predictions,infunc_mutant=dat.Mutation.mached,infunc_drugResponse=drug.Res.PRISM.matched, infunc_CRISPRResponse=CRISPR.KO.Res.matched )
   {
 
