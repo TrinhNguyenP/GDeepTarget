@@ -2,11 +2,10 @@ Package: GDeepTarget
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: sanjusinha7
+Maintainer: <sanju@terpmail.umd.edu>
+Description: Deep characterization of cancer drugs mechanism of action by integrating large-scale genetic and drug screens
+License: na
 Encoding: UTF-8
 LazyData: true
 Imports:tictoc, fgsea, ggplot2, ggpubr, statar, interactions, stats, reshape2, base, parallel,
