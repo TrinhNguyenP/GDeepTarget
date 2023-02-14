@@ -1,7 +1,9 @@
 # GDeepTarget
 #V1
+## Installation
 library(devtools)
 install_github("TrinhNguyenP/GDeepTarget")
+## Examples
 library( GDeepTarget)
 data ("OntargetM")
 library (parallel)
