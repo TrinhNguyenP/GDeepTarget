@@ -53,7 +53,7 @@ TargetLoweEpr.specificity=data.frame(LowExpr_interaction_strength=sapply(interac
 identical ( names(interaction.Features.Secondary.LowExpr), KnownTarget.predictions$drugName)
 KnownTarget.predictions <- cbind ( KnownTarget.predictions,TargetLoweEpr.specificity )
 ## whether interaction is true or false based on cut-off. estimate and p val from lm model
-KnownTarget.predictions$Whether_interaction=sapply(interaction.Features.Secondary.LowExpr, function(x) x[1]<0 & x[2]<0.2 )
+KnownTarget.predictions$Whether_interaction_Ex_based=sapply(interaction.Features.Secondary.LowExpr, function(x) x[1]<0 & x[2]<0.2 )
 ## Compute interaction between the drug and KO expression in term of mutant
 interaction.Features.Mutant<- MutantSpecificityScore (infunc_KnownTarget=KnownTarget.predictions,infunc_mutant=OntargetM$mutations_mat,infunc_drugResponse=OntargetM$secondary_prism, infunc_CRISPRResponse=OntargetM$avana_CRISPR)
 
