@@ -60,6 +60,8 @@ interaction.Features.Mutant<- MutantSpecificityScore (infunc_KnownTarget=KnownTa
 Target_Mutation_specificity=data.frame(mutation_interaction_strength=sapply(interaction.Features.Mutant, function(x) x[1]), mutation_interaction_P=sapply(interaction.Features.Mutant, function(x) x[2]))
 identical ( names(interaction.Features.Mutant), KnownTarget.predictions$drugName)
 KnownTarget.predictions <- cbind ( KnownTarget.predictions,Target_Mutation_specificity )
+## mutation interaction with P <0.1
+KnownTarget.predictions$predicted_resistance_mutation = KnownTarget.predictions$mutation_interaction_P<0.1
 saveRDS(KnownTarget.predictions,
            file = paste('KnownTarget_predictions.RDS', Sys.Date(), '.RDS', sep=''))
 
