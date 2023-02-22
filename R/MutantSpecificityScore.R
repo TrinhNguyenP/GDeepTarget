@@ -21,9 +21,8 @@ MutantSpecificityScore <- function(infunc_KnownTarget=KnownTarget_predictions,in
     infunc_drug_matched=err_handle(infunc_drugResponse[infunc_KnownTarget$drugBroadID[x],])
     infunc_avana_matched=err_handle(infunc_CRISPRResponse[infunc_KnownTarget$MaxTargetName[x],])
     infunc_mutation_matched=err_handle(infunc_mutant[infunc_KnownTarget$MaxTargetName[x],])
-
     err_handle(summary(lm(infunc_drug_matched ~
-                            infunc_avana_matched*infunc_expression_matched))$coefficients[4,c(1,4)])
+                            infunc_avana_matched*infunc_mutation_matched))$coefficients[4,c(1,4)])
 
     }
 )
