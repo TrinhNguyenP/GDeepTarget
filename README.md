@@ -51,16 +51,15 @@ interaction.Features.Secondary.LowExpr <- ExprSpecificityScore (infunc_KnownTarg
 TargetLoweEpr.specificity=data.frame(LowExpr_interaction_strength=sapply(interaction.Features.Secondary.LowExpr, function(x) x[1]),
                                      LowExpr_interaction_P=sapply(interaction.Features.Secondary.LowExpr, function(x) x[2]))
 identical ( names(interaction.Features.Secondary.LowExpr), KnownTarget.predictions$drugName)
-TargetLoweEpr.specificity=cbind(KnownTarget.predictions[,1:2], TargetLoweEpr.specificity)
-saveRDS(TargetLoweEpr.specificity,
-        file=paste('Target_LowedEpr_specificity.RDS', Sys.Date(), '.RDS', sep=''))
+KnownTarget.predictions <- cbind ( KnownTarget.predictions,TargetLoweEpr.specificity )
+## whether interaction is true or false based on cut-off. estimate and p val from lm model
+KnownTarget.predictions$Whether_interaction=sapply(interaction.Features.Secondary.LowExpr, function(x) x[1]<0 & x[2]<0.2 )
 ## Compute interaction between the drug and KO expression in term of mutant
 interaction.Features.Mutant<- MutantSpecificityScore (infunc_KnownTarget=KnownTarget.predictions,infunc_mutant=OntargetM$mutations_mat,infunc_drugResponse=OntargetM$secondary_prism, infunc_CRISPRResponse=OntargetM$avana_CRISPR)
 
 Target_Mutation_specificity=data.frame(mutation_interaction_strength=sapply(interaction.Features.Mutant, function(x) x[1]), mutation_interaction_P=sapply(interaction.Features.Mutant, function(x) x[2]))
-Target_Mutation_specificity=cbind(KnownTarget.predictions[,1:2], Target_Mutation_specificity)
-saveRDS(Target_Mutation_specificity,
-        file=paste('Target_Mutation_specificity.RDS', Sys.Date(), '.RDS', sep=''))
+identical ( names(interaction.Features.Mutant), KnownTarget.predictions$drugName)
+KnownTarget.predictions <- cbind ( KnownTarget.predictions,Target_Mutation_specificity )
 saveRDS(KnownTarget.predictions,
            file = paste('KnownTarget_predictions.RDS', Sys.Date(), '.RDS', sep=''))
 
